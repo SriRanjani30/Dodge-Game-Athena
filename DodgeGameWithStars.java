@@ -5,8 +5,8 @@ import java.util.Iterator;
 import java.util.Random;
 import javax.swing.*;
 
-public class DodgeGameWithStars extends JPanel implements ActionListener, KeyListener
-{
+public class DodgeGameWithStars extends JPanel implements ActionListener, KeyListener {
+
     private boolean inMenu = true;
     private boolean inGame = false;
     private boolean gameOver = false;
@@ -45,9 +45,9 @@ public class DodgeGameWithStars extends JPanel implements ActionListener, KeyLis
         setFocusable(true);
         addKeyListener(this);
 
-        playerImage = new ImageIcon("player.png").getImage();
-        blockImage = new ImageIcon("block.png").getImage();
-        powerUpImage = new ImageIcon("powerup.png").getImage();
+        playerImage = new ImageIcon(DodgeGameWithStars.class.getResource("/Images/player.png")).getImage();
+        blockImage = new ImageIcon(DodgeGameWithStars.class.getResource("/Images/block.png")).getImage();
+        powerUpImage = new ImageIcon(DodgeGameWithStars.class.getResource("/Images/powerup.png")).getImage();
 
         timer = new Timer(16, this);
 
@@ -58,7 +58,7 @@ public class DodgeGameWithStars extends JPanel implements ActionListener, KeyLis
             {
                 int W = getWidth();
                 int H = getHeight();
-                playerX = Math.max(0, W/2 - playerWidth/2);
+                playerX = Math.max(0, W / 2 - playerWidth / 2);
                 playerY = Math.max(0, H - playerHeight - 30);
             }
         });
@@ -135,10 +135,10 @@ public class DodgeGameWithStars extends JPanel implements ActionListener, KeyLis
     {
         g.setColor(Color.WHITE);
         g.setFont(new Font("Arial", Font.BOLD, 42));
-        drawCenteredString(g, "DODGE GAME", WIDTH, HEIGHT/3);
+        drawCenteredString(g, "DODGE GAME", WIDTH, HEIGHT / 3);
         g.setFont(new Font("Arial", Font.PLAIN, 22));
-        drawCenteredString(g, "Press 1 for Easy   |   2 for Normal   |   3 for Hard", WIDTH, HEIGHT/2);
-        drawCenteredString(g, "Use Left/Right arrows to move. Collect yellow power-ups to gain a life.", WIDTH, HEIGHT/2 + 40);
+        drawCenteredString(g, "Press 1 for Easy   |   2 for Normal   |   3 for Hard", WIDTH, HEIGHT / 2);
+        drawCenteredString(g, "Use Left/Right arrows to move. Collect yellow power-ups to gain a life.", WIDTH, HEIGHT / 2 + 40);
     }
 
     private void drawGame(Graphics2D g, int WIDTH, int HEIGHT)
@@ -155,7 +155,7 @@ public class DodgeGameWithStars extends JPanel implements ActionListener, KeyLis
 
         for (Rectangle block : blocks)
         {
-            if (blockImage!= null) 
+            if (blockImage != null) 
             {
                 g.drawImage(blockImage, block.x, block.y, block.width, block.height, null);
             } 
@@ -200,7 +200,7 @@ public class DodgeGameWithStars extends JPanel implements ActionListener, KeyLis
     {
         FontMetrics fm = g.getFontMetrics();
         int textWidth = fm.stringWidth(text);
-        g.drawString(text, (panelWidth - textWidth)/2, baselineY);
+        g.drawString(text, (panelWidth - textWidth) / 2, baselineY);
     }
 
     @Override
